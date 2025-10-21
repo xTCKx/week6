@@ -19,7 +19,7 @@
     - docker_cinnamorole
 
   post_tasks:
-    - name: check cinnamoroll application is running
+    - name: Check cinnamoroll application is running
       ansible.builtin.wait_for:
         host: "{{ ansible_host }}"
         port: 8080
@@ -28,12 +28,12 @@
       delegate_to: localhost
       become: false
 
-    - name: display application URL
+    - name: Display application URL
       debug:
         msg: "Cinnamoroll application is available at http://{{ ansible_host }}:8080"
 
   handlers:
-    - name: restart application
+    - name: Restart application
       command: docker-compose restart
       args:
         chdir: "{{ docker_compose_dir }}"

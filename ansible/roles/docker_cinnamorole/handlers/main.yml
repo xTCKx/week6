@@ -1,12 +1,12 @@
 ---
-- name: start en enable docker
+- name: Start en enable docker
   ansible.builtin.systemd:
     name: docker
     state: started
     enabled: yes
   become: true
 
-- name: restart docker
+- name: Restart docker
   community.docker.docker_compose_v2:
     project_src: "{{ docker_compose_dir }}"
     state: restarted

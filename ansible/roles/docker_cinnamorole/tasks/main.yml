@@ -1,5 +1,5 @@
 ---
-- name: update package cache
+- name: Update package cache
   apt:
     update_cache: yes
     cache_valid_time: 3600
