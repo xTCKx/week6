@@ -132,6 +132,10 @@ jobs:
           name: ansible-inventory
           path: ansible/inventory.ini
 
+      - name: install ansible requirements
+        run: |
+          ansible-galaxy install -r ansible/requirements.yml
+
       - name: run ansible playbook
         run: |
           ansible-playbook -i ansible/inventory.ini ansible/docker.yml

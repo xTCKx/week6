@@ -16,7 +16,7 @@
         upgrade: safe
 
   roles:
-    - docker_cinnamorole
+    - xTCKx.docker_cinnamorole
 
   post_tasks:
     - name: Check cinnamoroll application is running
