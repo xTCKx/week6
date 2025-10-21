@@ -1,0 +1,7 @@
+services:
+  cinnamoroll:
+    container_name: cinnamoroll
+    image: ghcr.io/xtckx/app-cinnamoroll:latest
+    restart: unless-stopped
+    ports:
+      - 8080:8080

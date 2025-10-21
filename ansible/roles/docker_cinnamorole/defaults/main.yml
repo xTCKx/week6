@@ -1,0 +1,11 @@
+---
+# Default variables for docker role (Ubuntu/Debian only)
+
+# Directory where docker-compose.yml will be placed
+docker_compose_dir: /opt/docker-compose
+
+# Source path for the docker-compose file (relative to playbook or absolute path)
+compose_file_src: docker-compose.yml
+
+# User to add to docker group (defaults to ansible_user)
+docker_user: "{{ ansible_user | default('root') }}"

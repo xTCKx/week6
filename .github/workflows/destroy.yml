@@ -1,0 +1,29 @@
+---
+name: destroy infrastructure
+on:
+  workflow_dispatch
+jobs:
+  destroy:
+    runs-on: self-hosted
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v5
+
+      - name: set up node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+
+      - name: set up terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.3
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: terraform init
+        working-directory: terraform
+        run: terraform init -input=false
+
+      - name: terraform destroy
+        working-directory: terraform
+        run: terraform destroy -auto-approve -input=false

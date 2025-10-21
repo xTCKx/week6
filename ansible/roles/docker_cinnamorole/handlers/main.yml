@@ -1,0 +1,14 @@
+---
+- name: start en enable docker
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: yes
+  become: true
+
+- name: restart docker
+  community.docker.docker_compose_v2:
+    project_src: "{{ docker_compose_dir }}"
+    state: restarted
+  become: true
+  when: docker_compose_content is defined

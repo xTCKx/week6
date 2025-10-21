@@ -1,0 +1,39 @@
+---
+- name: Deploy Docker and Docker Compose Application
+  hosts: azure
+  become: yes
+  gather_facts: yes
+
+  vars:
+    docker_compose_dir: /opt/cinnamoroll-app
+    docker_user: "{{ ansible_user }}"
+    compose_file_src: "{{ playbook_dir }}/../app/docker-compose.yml"
+
+  pre_tasks:
+    - name: Update system packages
+      apt:
+        update_cache: yes
+        upgrade: safe
+
+  roles:
+    - docker_cinnamorole
+
+  post_tasks:
+    - name: check cinnamoroll application is running
+      ansible.builtin.wait_for:
+        host: "{{ ansible_host }}"
+        port: 8080
+        # retries: 30
+        delay: 10
+      delegate_to: localhost
+      become: false
+
+    - name: display application URL
+      debug:
+        msg: "Cinnamoroll application is available at http://{{ ansible_host }}:8080"
+
+  handlers:
+    - name: restart application
+      command: docker-compose restart
+      args:
+        chdir: "{{ docker_compose_dir }}"
