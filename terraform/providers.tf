@@ -12,9 +12,8 @@ terraform {
       source = "registry.terraform.io/josenk/esxi"
     }
     azuread = {
-      source  = "hashicorp/azuread"
+      source = "hashicorp/azuread"
     }
-
     local = {
       source = "hashicorp/local"
     }
@@ -31,6 +30,6 @@ provider "esxi" {
 
 provider "azurerm" {
   resource_provider_registrations = "none"
-  subscription_id = "c064671c-8f74-4fec-b088-b53c568245eb"
-  features{}
+  subscription_id                 = "c064671c-8f74-4fec-b088-b53c568245eb"
+  features {}
 }
