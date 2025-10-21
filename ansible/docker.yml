@@ -5,9 +5,9 @@
   gather_facts: yes
 
   vars:
-    docker_compose_dir: /opt/cinnamoroll-app
-    docker_user: "{{ ansible_user }}"
-    compose_file_src: "{{ playbook_dir }}/../app/docker-compose.yml"
+  docker_cinnamorole_docker_compose_dir: /opt/cinnamoroll-app
+  docker_cinnamorole_docker_user: "{{ ansible_user }}"
+  docker_cinnamorole_compose_file_src: "{{ playbook_dir }}/../app/docker-compose.yml"
 
   pre_tasks:
     - name: Update system packages
@@ -36,4 +36,4 @@
     - name: Restart application
       command: docker-compose restart
       args:
-        chdir: "{{ docker_compose_dir }}"
+  chdir: "{{ docker_cinnamorole_docker_compose_dir }}"

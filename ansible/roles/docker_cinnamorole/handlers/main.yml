@@ -7,8 +7,8 @@
   become: true
 
 - name: Restart docker
-  community.docker.docker_compose_v2:
-    project_src: "{{ docker_compose_dir }}"
+  community.docker.docker_compose:
+    project_src: "{{ docker_cinnamorole_docker_compose_dir }}"
     state: restarted
   become: true
   when: docker_compose_content is defined
