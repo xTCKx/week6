@@ -71,7 +71,7 @@
     owner: "{{ ansible_user | default('root') }}"
     group: "{{ ansible_user | default('root') }}"
     mode: "0644"
-  notify: restart docker
+  notify: Restart docker
 
 - name: Deploy Docker Compose stack
   community.docker.docker_compose_v2:
