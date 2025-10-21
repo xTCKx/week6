@@ -7,5 +7,3 @@ skip_list:
   - no-changed-when  # Commands should not change things if nothing needs doing
   - ignore-errors  # Use failed_when instead of ignore_errors
   - o-role-prefix  # Variables names from within roles should use docker_cinnamorole_ as a prefix (vars: docker_compose_dir)
-
-
